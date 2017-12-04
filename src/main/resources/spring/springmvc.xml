@@ -20,12 +20,16 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	<!--配置登录拦截器-->
-<!--	<mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/login/**"/>
+			<mvc:mapping path="/buyer/**"/>
+			<bean class="com.shopping.interceptor.BuyerLoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>-->
+		<mvc:interceptor>
+			<mvc:mapping path="/store/**"/>
+			<bean class="com.shopping.interceptor.StoreInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!--配置ajax跨域请求-->
 	<mvc:cors>

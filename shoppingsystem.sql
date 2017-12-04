@@ -127,10 +127,10 @@ CREATE TABLE `user` (
   `username` varchar(50) NOT NULL COMMENT '用户名',
   `password` varchar(50) NOT NULL COMMENT '密码，以md5加密存储',
   `mobile` varchar(20) NOT NULL COMMENT '电话号码，不可重复',
-  `type` tinyint(4) NOT NULL COMMENT '用户类型，1为系统管理员，2为卖家，3为买家',
+  `type` tinyint(4) NOT NULL COMMENT '用户类型，0为系统管理员，1为卖家，2为买家',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +139,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'root','123456','10086',1);
+INSERT INTO `user` VALUES (1,'root','e10adc3949ba59abbe56e057f20f883e','10086',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -152,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-03 23:49:34
+-- Dump completed on 2017-12-04 14:10:08
