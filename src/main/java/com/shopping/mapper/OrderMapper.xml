@@ -288,4 +288,8 @@
       mobile = #{mobile,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectOrdersByBuyerId" parameterType="int" resultMap="BaseResultMap">
+    SELECT * FROM shoppingsystem.order WHERE buyer_id=#{buyerId}
+  </select>
 </mapper>

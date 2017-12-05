@@ -255,4 +255,14 @@
       num = #{num,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <!--根据名字模糊查询所有商品-->
+  <select id="selectItemsByName" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM item
+    <where>
+      <if test="name != null">
+        name LIKE "%"#{name}"%"
+      </if>
+    </where>
+  </select>
 </mapper>

@@ -25,7 +25,6 @@ public class BuyerLoginInterceptor implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession httpSession = request.getSession();
-        System.out.println(httpSession.getId());
         User user = (User) httpSession.getAttribute("UserInfo");
         if(null == user || user.getType()!=BUYER_TYPE.byteValue()){
             response.sendRedirect("/user/loginpage");

@@ -21,7 +21,12 @@
                     contentType: "application/json; charset=utf-8",
                     data:JSON.stringify(GetJsonData()),
                     success:function(data){
-                        window.location.href="/buyer/test";
+                        if(data.data.type==2){
+                            window.location.href="/buyer/itemlist";
+                        }else {
+                            window.location.href="/store/itemlist";
+                        }
+
                     }
                 });
                 function GetJsonData() {
