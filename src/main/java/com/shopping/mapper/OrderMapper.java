@@ -30,4 +30,8 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
     List<Order> selectOrdersByBuyerId(Integer buyerId);
+
+    List<Order> selectOrdersByStoreId(Integer storeId);
+
+    List<Order> selectOrdersByItemName(Order order);
 }

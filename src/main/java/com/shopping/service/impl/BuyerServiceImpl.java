@@ -5,6 +5,7 @@ import com.shopping.mapper.OrderMapper;
 import com.shopping.mapper.UserMapper;
 import com.shopping.pojo.*;
 import com.shopping.service.BuyerService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,6 +84,29 @@ public class BuyerServiceImpl implements BuyerService {
 
     /**
      *@author: pele
+     *@time: 2017/12/5 23:59
+     *@package: com.shopping.service.impl
+     *@descroption:根据商品名字查询所有订单
+     */
+    @Override
+    public List<OrderQuery> getOrdersByItemName(String itemName,Integer buyId) {
+        Order orderExample = new Order();
+        orderExample.setBuyerId(buyId);
+        orderExample.setItemName(itemName);
+        List<Order> orderList = orderMapper.selectOrdersByItemName(orderExample);
+        List<OrderQuery> orderQueryList = new ArrayList<>();
+        for(Order order:orderList){
+            //查询所有订单的卖家名
+            User store = userMapper.selectByPrimaryKey(order.getStoreId());
+            OrderQuery orderQuery = new OrderQuery(order);
+            orderQuery.setStoreName(store.getUsername());
+            orderQueryList.add(orderQuery);
+        }
+        return orderQueryList;
+    }
+
+    /**
+     *@author: pele
      *@time: 2017/12/5 10:56
      *@package: com.shopping.service.impl
      *@descroption:列出全部商品
@@ -99,5 +123,12 @@ public class BuyerServiceImpl implements BuyerService {
             itemQueryList.add(itemQuery);
         }
         return itemQueryList;
+    }
+
+
+    @Override
+    public Item getItemById(Long itemId) {
+        Item item = itemMapper.selectByPrimaryKey(itemId);
+        return item;
     }
 }

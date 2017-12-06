@@ -10,10 +10,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#commit").click(function(){
+            $("#login").click(function(){
                 $.ajax({
                     url:"http://localhost:8080/user/login",
                     type:"post",
@@ -21,10 +22,14 @@
                     contentType: "application/json; charset=utf-8",
                     data:JSON.stringify(GetJsonData()),
                     success:function(data){
-                        if(data.data.type==2){
-                            window.location.href="/buyer/itemlist";
-                        }else {
-                            window.location.href="/store/itemlist";
+                        if(data.status==200){
+                            if(data.data.type==2){
+                                window.location.href="/buyer/itemlist";
+                            }else {
+                                window.location.href="/store/itemlist";
+                            }
+                        }else{
+                            alert("用户名或者密码错误");
                         }
 
                     }
@@ -43,10 +48,26 @@
     <title>User</title>
 </head>
 <body>
-<p>这里是测试界面</p>
-用户名：<input type="text" id="mobile"><br>
-密码  ：<input type="text" id="password"><br>
-提交:<input type="button" id="commit" value="提交">
-
+<div class="background">
+    <img src="/image/background.png" width="100%" height="100%"/>
+</div>
+<div class="middle">
+    <center style="font-size:36px;" >登录界面</center>
+    <form action="/user/login" method="post">
+        <div class="text_sign">
+            <p>
+                <label for="mobile">手机号：</label>
+                <input type="text" name="mobile" id="mobile" />
+            </p>
+            <p>
+                <label for="password">密&nbsp;&nbsp;&nbsp;码：</label>
+                <input type="password" name="password" id="password" />
+            </p>
+        </div>
+        <div class="submit_sign">
+            <input type="button" name="login" id="login" value="登录"  >
+        </div>
+    </form>
+</div>
 </body>
 </html>

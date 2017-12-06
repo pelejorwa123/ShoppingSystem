@@ -1,8 +1,11 @@
 package com.shopping.service.impl;
 
 import com.shopping.mapper.ItemMapper;
+import com.shopping.mapper.OrderMapper;
 import com.shopping.pojo.Item;
 import com.shopping.pojo.ItemExample;
+import com.shopping.pojo.Order;
+import com.shopping.pojo.OrderExample;
 import com.shopping.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,10 @@ public class StoreServiceImpl implements StoreService {
 
     @Autowired
     ItemMapper itemMapper;
+
+    @Autowired
+    OrderMapper orderMapper;
+
     /**
      *@author: pele
      *@time: 2017/12/5 11:16
@@ -53,5 +60,40 @@ public class StoreServiceImpl implements StoreService {
             }
         }
         return itemList;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/5 12:02
+     *@package: com.shopping.service.impl
+     *@descroption:根据店铺ID查询出该店铺的全部订单
+     */
+    @Override
+    public List<Order> getOrderListByStoreId(Integer storeId) {
+        List<Order> orderList = orderMapper.selectOrdersByStoreId(storeId);
+        return orderList;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/5 12:22
+     *@package: com.shopping.service.impl
+     *@descroption:根据商品ID查询出商品
+     */
+    @Override
+    public Item getItemByItemId(Long itemId) {
+        Item item = itemMapper.selectByPrimaryKey(itemId);
+        return item;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/5 12:47
+     *@package: com.shopping.service.impl
+     *@descroption:更新商品
+     */
+    @Override
+    public void updateItem(Item item) {
+        itemMapper.updateByPrimaryKeySelective(item);
     }
 }

@@ -17,4 +17,6 @@ public interface BuyerService {
     List<OrderQuery> getAllOrderList(Integer buyerId);
     List<ItemQuery> getItemsByName(String itemName);
     List<ItemQuery> getAllItem();
+    Item getItemById(Long itemId);
+    List<OrderQuery> getOrdersByItemName(String itemName,Integer buyId);
 }

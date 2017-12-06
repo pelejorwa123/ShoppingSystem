@@ -1,0 +1,157 @@
+/* CSS Document */
+body{
+	font-family:"微软雅黑";
+	}
+
+
+/*for sign login shopcart*/
+
+.background{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	}
+/*middle->to put page in middle*/
+.middle{
+	height:400px;
+	margin: 0 auto;
+	margin-top:160px;
+	position:relative;
+	}
+
+.title_sign{
+	margin: 0 auto;
+	padding-bottom:20px;
+	font-size:38px;
+	width:170px;
+	}
+
+.text_sign{
+	margin: 0 auto;
+	font-size:18px;
+	width:300px;
+	}
+	
+.submit_sign{
+	margin: 0 auto;
+	font-size:18px;
+	width:30px;
+	}
+
+	
+/*the header of index*/
+.header{
+	width:990px;
+	height:100px;
+	margin:0 auto;
+	background-image:url(/image/3.png);
+	color:#FFFFFF;
+	}
+
+.logo{
+	float:left;
+	margin-left:20px;
+	margin-right:20px;
+	padding-top:15px;
+	}
+
+.header_title{
+	float:left;
+	font-size:38px;
+	width:200px;
+	margin-left:20px;
+	padding-top:25px;
+	}
+	
+.header_text{
+	float:left;
+	font-size:18px;
+	width: 480px;
+	height: 30px;
+ 	margin-left:150px;
+	padding-top:40px;
+	}
+
+.header_text li{
+	float:left;
+	padding-right:30px;
+	color:#000000;
+}
+
+/*the main of index*/
+.search{
+	margin:0 auto;
+	width:990px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:20px;
+	}
+
+
+.mid_index{
+	width: 990px;
+	margin: 0px auto;
+	line-height: normal;
+	}
+
+.content{
+	width:970px;
+	height:auto;
+	margin-top:8px;
+	margin:0 auto;
+}
+
+.product{
+	width:970px;
+	height:98px;
+	border:1px solid orange;
+	margin-top:2px;
+	margin-bottom:2px;
+	}
+
+.photo{
+	float:left;
+	width:80px;
+	height:80px;
+	padding:5px;
+	}
+
+.intro{
+	width:600px;
+	font-size:14px;
+	float:left
+	}
+
+.submit_buy{
+	width:150px;
+	float:right;
+	margin-top:10px;
+	margin-right:50px;
+	font-size:14px;
+	}
+
+/*for all*/
+ul,li,ol,h1,dl,dd{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	word-spacing: normal;
+	}
+
+a{
+	text-decoration: none;
+	line-height: normal;
+	white-space: normal;
+	color:#000000;
+	}    
+a:hover{
+	text-decoration: none;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
