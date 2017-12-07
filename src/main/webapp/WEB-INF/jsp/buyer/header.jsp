@@ -33,7 +33,7 @@
             <li>
                 <a href="/buyer/itemlist" title="首页" target="_blank">首页</a>       </li>
             <li>
-                <a href="login.html" title="登录" target="_blank">${user.username}</a>       </li>
+                <a href="#" title="登录" target="_blank">${user.username}</a>       </li>
             <li>
                 <a href="/buyer/orderlist" title="订单" target="_blank">订单</a>       </li>
             <li>

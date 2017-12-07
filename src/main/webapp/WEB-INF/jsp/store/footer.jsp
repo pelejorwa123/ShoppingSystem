@@ -29,6 +29,7 @@
 <body>
 <div id="footer">
     <center><p style="color:#FFFFFF">谢谢您的支持！</p></center>
+    <p style="color:#FFFFFF">copyright@whu.cs.shopping.com</p>
 </div>
 </body>
 </html>

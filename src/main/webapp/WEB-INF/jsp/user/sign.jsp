@@ -16,28 +16,27 @@
         $(document).ready(function(){
             $("#login").click(function(){
                 $.ajax({
-                    url:"http://localhost:8080/user/login",
+                    url:"http://localhost:8080/user/register",
                     type:"post",
                     dataType:"json",
                     contentType: "application/json; charset=utf-8",
                     data:JSON.stringify(GetJsonData()),
                     success:function(data){
                         if(data.status==200){
-                            if(data.data.type==2){
-                                window.location.href="/buyer/itemlist";
-                            }else {
-                                window.location.href="/store/itemlist";
-                            }
+                            alert("注册成功!");
+                            window.location.href="/user/loginpage"
                         }else{
-                            alert("用户名或者密码错误");
+                            alert(data.msg);
                         }
 
                     }
                 });
                 function GetJsonData() {
                     var json = {
+                        "username":$("#username").val(),
                         "mobile":$("#mobile").val(),
                         "password":$("#password").val(),
+                        "type":$("#type").val()
                     };
                     return json;
                 }
@@ -52,9 +51,13 @@
     <img src="/image/background.png" width="100%" height="100%"/>
 </div>
 <div class="middle">
-    <center style="font-size:36px;" >登录界面</center>
-    <form action="/user/login" method="post">
+    <center style="font-size:36px;" >注册界面</center>
+    <form action="/user/register" method="post">
         <div class="text_sign">
+            <p>
+                <label for="username">用户名：</label>
+                <input type="text" name="username" id="username" />
+            </p>
             <p>
                 <label for="mobile">手机号：</label>
                 <input type="text" name="mobile" id="mobile" />
@@ -64,11 +67,15 @@
                 <input type="password" name="password" id="password" />
             </p>
             <p>
-                <a href="/user/toSign" style="text-decoration: underline">注册</a>
+                <label for="type">类&nbsp;&nbsp;&nbsp;型：</label>
+                <select name="type" size=1 id="type">
+                    <option value="2" selected>买家</option>
+                    <option value="1">卖家</option>
+                </select>
             </p>
         </div>
         <div class="submit_sign">
-            <input type="button" name="login" id="login" value="登录"  >
+            <input type="button" name="login" id="login" value="注册"  >
         </div>
     </form>
 </div>

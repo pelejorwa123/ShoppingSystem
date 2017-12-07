@@ -27,4 +27,9 @@ public class PageController {
         return "/buyer/footer";
     }
 
+    @RequestMapping("user/toSign")
+    public String showSignPage(){
+        return "/user/sign";
+    }
+
 }

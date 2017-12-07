@@ -56,10 +56,10 @@
 <div class="search" >
     <form action="/buyer/search" method="post">
         输入要搜索的内容，并勾选范围：
-        <input type="text" name="name" id="search_for" />
+        <input type="text" name="name" id="search_for" value="${name}"/>
         <input type="submit" name="search" id="search" value="搜索">
-        <input type="radio" name="type" value="1" checked>商品
-        <input type="radio" name="type" value="2">店铺
+        <input type="radio" name="type" value="1" <c:if test="${type !=2}">checked="checked"</c:if>>商品
+        <input type="radio" name="type" value="2" <c:if test="${type ==2}">checked="checked"</c:if>>店铺
     </form>
 </div>
 <!--main content begin-->

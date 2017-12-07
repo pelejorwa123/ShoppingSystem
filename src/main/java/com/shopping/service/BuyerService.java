@@ -19,4 +19,8 @@ public interface BuyerService {
     List<OrderQuery> getOrdersByItemName(String itemName,Integer buyId);
     List<CartQuery> getCartList(Integer buyerId);
     AjaxResult addCart(Integer buyerId,Long itemId);
+    AjaxResult delCart(Integer buyerId,Long itemId);
+    List<ItemQuery> getItemsByStoreName(String storeName);
+    OrderQuery makeOrder(Integer buyerId,Long itemId,Integer num);
+    AjaxResult addOrder(Order order);
 }

@@ -6,6 +6,7 @@ import com.shopping.service.BuyerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -52,9 +53,12 @@ public class BuyerController {
         List<ItemQuery> itemList = new ArrayList<>();
         if(type == 1){
             itemList = buyerService.getItemsByName(name);
+        }else{
+            itemList = buyerService.getItemsByStoreName(name);
         }
         model.addAttribute("items",itemList);
-        model.addAttribute("itemName",name);
+        model.addAttribute("name",name);
+        model.addAttribute("type",type);
         User user = (User) httpSession.getAttribute("UserInfo");
         model.addAttribute("user",user);
         return "/buyer/items";
@@ -131,6 +135,47 @@ public class BuyerController {
     public AjaxResult addCart(HttpSession httpSession,Long itemId){
         User user = (User) httpSession.getAttribute("UserInfo");
         AjaxResult result = buyerService.addCart(user.getId(),itemId);
+        return result;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/7 14:47
+     *@package: com.shopping.controller
+     *@descroption:移除购物车的商品
+     */
+    @RequestMapping("delCart")
+    @ResponseBody
+    public AjaxResult delCart(HttpSession httpSession,Long itemId){
+        User user = (User) httpSession.getAttribute("UserInfo");
+        AjaxResult result = buyerService.delCart(user.getId(),itemId);
+        return result;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/7 15:52
+     *@package: com.shopping.controller
+     *@descroption:展示确认订单页面
+     */
+    @RequestMapping("toBuy")
+    public String toBuy(Long itemId,Integer num,HttpSession httpSession,Model model){
+        User user = (User) httpSession.getAttribute("UserInfo");
+        OrderQuery order = buyerService.makeOrder(user.getId(),itemId,num);
+        model.addAttribute("Order",order);
+        return "/buyer/toBuy";
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/7 16:04
+     *@package: com.shopping.controller
+     *@descroption:生成订单
+     */
+    @RequestMapping("placeOrder")
+    @ResponseBody
+    public AjaxResult placeOrder(@RequestBody Order order){
+        AjaxResult result = buyerService.addOrder(order);
         return result;
     }
 }

@@ -208,4 +208,13 @@
       type = #{type,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getStoresByName" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM user
+    <where>
+      <if test="null != username">
+        username LIKE "%"#{username}"%"
+      </if>
+    </where>
+  </select>
 </mapper>
