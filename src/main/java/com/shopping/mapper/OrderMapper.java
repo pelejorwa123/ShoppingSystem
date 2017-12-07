@@ -34,4 +34,6 @@ public interface OrderMapper {
     List<Order> selectOrdersByStoreId(Integer storeId);
 
     List<Order> selectOrdersByItemName(Order order);
+
+    List<Order> selectOrdersByItemNameAndStoreId(Order order);
 }

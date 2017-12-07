@@ -19,7 +19,7 @@
     <style type="text/css">
         #footer {
             width:990px;
-            height:40px;
+            height:100px;
             margin:0 auto;
             background-image:url(/image/3.png)
         }
@@ -28,7 +28,10 @@
 
 <body>
 <div id="footer">
-    <center><p style="color:#FFFFFF">谢谢您的支持！</p></center>
+    <center>
+        <p style="color:#FFFFFF">谢谢您的支持！</p>
+        <p style="color:#FFFFFF">copyright@whu.cs.shopping.com</p>
+    </center>
 </div>
 </body>
 </html>

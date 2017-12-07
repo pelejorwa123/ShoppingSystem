@@ -15,7 +15,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
-    <title>网上商城</title>
+    <title>我的购物车</title>
 </head>
 <body>
 <!--header begin-->
@@ -32,50 +32,32 @@
     </iframe>--%>
     <jsp:include page="header.jsp"></jsp:include>
 </div>
-<!--search begin-->
-<div class="search" >
-    <form action="/buyer/search" method="post">
-        输入要搜索的内容，并勾选范围：
-        <input type="text" name="name" id="search_for" />
-        <input type="submit" name="search" id="search" value="搜索">
-        <input type="radio" name="type" value="1" checked>商品
-        <input type="radio" name="type" value="2">店铺
-        <input type="radio" name="type" value="3"> 已购买
-        <input type="radio" name="type" value="4">已售出
-    </form>
-</div>
 <!--main content begin-->
 <div class="content">
-    <table  style=" width:990px;margin:0 auto; border-width:0px;" scrolling="no">
-        <tr>
-            <th align="left">图片</th>
-            <th align="left">商品名</th>
-            <th align="left">店铺</th>
-            <th align="left">价格</th>
-            <th align="left">库存</th>
-            <th align="left">商品描述</th>
-            <th align="left">操作</th>
-        </tr>
-        <c:forEach items="${items}" var="item">
-            <tr>
-                <td>
-                    <img src="${item.imgUrl}" style="width: 120px;height: 90px"/>
-                </td>
-                <td>${item.name}</td>
-                <td>${item.storeName}</td>
-                <td>${item.price}</td>
-                <td>${item.num}</td>
-                <td>${item.description}</td>
-                <td><button >加入购物车</button></td>
-            </tr>
-        </c:forEach>
-    </table>
+    <c:forEach items="${carts}" var="cart">
+        <div class="product">
+            <div class="photo">
+                <img src="${cart.imgUrl}" style="height: 90px;width: 120px"/></div>
+            <br>
+            <div class="intro">
+                商品名称：${cart.itemName}(ID：${cart.itemId})</br>
+                店铺名称：${cart.storeName}(ID：${cart.storeId})</br>
+                描述：${cart.description}</br>
+            </div>
+            <div class="submit_buy">
+                <ul></br>
+                    <li>购买数量:<input type="text" name="num" id="num" size="1" value="${cart.num}"/></li>
+                    <br/>
+                    <li><a href="#" style="text-decoration:underline;color: coral">去结算</a></li>
+                </ul></div>
+        </div><!--product end-->
+    </c:forEach>
 </div><!--content end-->
 
 
 <!--footer begin-->
 <div class="mid_index">
-    <iframe src="footer" style="height:40px;
+    <iframe src="footer" style="height:100px;
 			width:990px;
 			border-width:0px;"
             scrolling="no" ></iframe>

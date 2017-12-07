@@ -15,7 +15,27 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
     <title>网上商城</title>
+
+    <script type="text/javascript">
+        function addCart(itemId) {
+            $.ajax({
+                url:"http://localhost:8080/buyer/addCart?itemId="+itemId,
+                type:"post",
+                dataType:"json",
+                contentType: "application/json; charset=utf-8",
+                success:function(data){
+                    if(data.status==200){
+                       alert("加入购物车成功")
+                    }else{
+                        alert("加入购物车失败");
+                    }
+
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <!--header begin-->
@@ -40,8 +60,6 @@
         <input type="submit" name="search" id="search" value="搜索">
         <input type="radio" name="type" value="1" checked>商品
         <input type="radio" name="type" value="2">店铺
-        <input type="radio" name="type" value="3"> 已购买
-        <input type="radio" name="type" value="4">已售出
     </form>
 </div>
 <!--main content begin-->
@@ -66,7 +84,7 @@
                 <td>${item.price}</td>
                 <td>${item.num}</td>
                 <td>${item.description}</td>
-                <td><button >加入购物车</button></td>
+                <td><button style="height: 30px;border:none" id="${item.id}" onclick="addCart(this.id)" >加入购物车</button></td>
             </tr>
         </c:forEach>
     </table>
@@ -75,7 +93,7 @@
 
 <!--footer begin-->
 <div class="mid_index">
-    <iframe src="footer" style="height:40px;
+    <iframe src="footer" style="height:100px;
 			width:990px;
 			border-width:0px;"
             scrolling="no" ></iframe>

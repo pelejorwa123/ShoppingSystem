@@ -1,5 +1,7 @@
 package com.shopping.service.impl;
 
+import com.shopping.common.pojo.AjaxResult;
+import com.shopping.mapper.CartMapper;
 import com.shopping.mapper.ItemMapper;
 import com.shopping.mapper.OrderMapper;
 import com.shopping.mapper.UserMapper;
@@ -29,6 +31,9 @@ public class BuyerServiceImpl implements BuyerService {
 
     @Autowired
     ItemMapper itemMapper;
+
+    @Autowired
+    CartMapper cartMapper;
 
     /**
      *@author: pele
@@ -103,6 +108,65 @@ public class BuyerServiceImpl implements BuyerService {
             orderQueryList.add(orderQuery);
         }
         return orderQueryList;
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/6 16:50
+     *@package: com.shopping.service.impl
+     *@descroption:根据用户Id，商品Id更新购物车
+     */
+    @Override
+    public AjaxResult addCart(Integer buyerId, Long itemId) {
+        //先判断购物车之前已经存在这个用户这个商品
+        CartExample cartExample = new CartExample();
+        CartExample.Criteria criteria = cartExample.createCriteria();
+        criteria.andBuyerIdEqualTo(buyerId);
+        criteria.andItemIdEqualTo(itemId);
+        List<Cart> cartQueryResult = cartMapper.selectByExample(cartExample);
+        Cart cart = new Cart();
+        //如果没有，则进行插入操作
+        if(null == cartQueryResult || cartQueryResult.isEmpty()){
+            cart.setBuyerId(buyerId);
+            cart.setItemId(itemId);
+            cart.setNum(1);//默认数量设为1
+            Item item = itemMapper.selectByPrimaryKey(itemId);
+            cart.setItemName(item.getName());
+            cartMapper.insertSelective(cart);
+        }else{
+            //否则直接更新记录
+            cart = cartQueryResult.get(0);
+            cart.setNum(cart.getNum()+1);//对购物车中的数量加1
+            cartMapper.updateByPrimaryKey(cart);
+        }
+        return AjaxResult.ok(cart);
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/6 15:58
+     *@package: com.shopping.service.impl
+     *@descroption:根据用户id查询出用户购物车的商品
+     */
+    @Override
+    public List<CartQuery> getCartList(Integer buyerId) {
+        CartExample cartExample = new CartExample();
+        CartExample.Criteria criteria = cartExample.createCriteria();
+        criteria.andBuyerIdEqualTo(buyerId);
+        List<Cart> cartList = cartMapper.selectByExample(cartExample);
+        //生成cartQuery
+        List<CartQuery> cartQueryList = new ArrayList<>();
+        for (Cart cart :cartList) {
+            CartQuery cartQuery = new CartQuery(cart);
+            Item item = itemMapper.selectByPrimaryKey(cart.getItemId());
+            cartQuery.setStoreId(item.getStoreId());
+            cartQuery.setImgUrl(item.getImgUrl());
+            cartQuery.setDescription(item.getDescription());
+            User store = userMapper.selectByPrimaryKey(item.getStoreId());
+            cartQuery.setStoreName(store.getUsername());
+            cartQueryList.add(cartQuery);
+        }
+        return cartQueryList;
     }
 
     /**

@@ -62,7 +62,7 @@
                 <td>${order.totalPrice}</td>
                 <td>${order.address}</td>
                 <td>${order.mobile}</td>
-                <td>${order.createTime}</td>
+                <td><fmt:formatDate value="${order.createTime}" type="both"/></td>
             </tr>
         </c:forEach>
     </table>
@@ -70,7 +70,7 @@
 
 
 <!--footer begin-->
-<div class="mid_index" style="height:40px;
+<div class="mid_index" style="height:100px;
 			width:990px;
 			border-width:0px;"
      scrolling="no">

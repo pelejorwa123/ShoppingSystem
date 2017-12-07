@@ -1,9 +1,7 @@
 package com.shopping.service;
 
-import com.shopping.pojo.Item;
-import com.shopping.pojo.ItemQuery;
-import com.shopping.pojo.Order;
-import com.shopping.pojo.OrderQuery;
+import com.shopping.common.pojo.AjaxResult;
+import com.shopping.pojo.*;
 
 import java.util.List;
 
@@ -19,4 +17,6 @@ public interface BuyerService {
     List<ItemQuery> getAllItem();
     Item getItemById(Long itemId);
     List<OrderQuery> getOrdersByItemName(String itemName,Integer buyId);
+    List<CartQuery> getCartList(Integer buyerId);
+    AjaxResult addCart(Integer buyerId,Long itemId);
 }

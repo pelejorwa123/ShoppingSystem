@@ -1,11 +1,13 @@
 package com.shopping.controller;
 
+import com.shopping.common.pojo.AjaxResult;
 import com.shopping.pojo.*;
 import com.shopping.service.BuyerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -101,5 +103,34 @@ public class BuyerController {
         model.addAttribute("orders",orderQueryList);
         model.addAttribute("name",name);
         return "/buyer/orders";
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/6 15:51
+     *@package: com.shopping.controller
+     *@descroption:商品购物车展示页面
+     */
+    @RequestMapping("shopcart")
+    public String getShopCart(HttpSession httpSession,Model model){
+        User user = (User) httpSession.getAttribute("UserInfo");
+        List<CartQuery> cartList = buyerService.getCartList(user.getId());
+        model.addAttribute("user",user);
+        model.addAttribute("carts",cartList);
+        return "/buyer/shopcart";
+    }
+
+    /**
+     *@author: pele
+     *@time: 2017/12/6 16:45
+     *@package: com.shopping.controller
+     *@descroption:接受商品Id，加入购物车
+     */
+    @RequestMapping("addCart")
+    @ResponseBody
+    public AjaxResult addCart(HttpSession httpSession,Long itemId){
+        User user = (User) httpSession.getAttribute("UserInfo");
+        AjaxResult result = buyerService.addCart(user.getId(),itemId);
+        return result;
     }
 }

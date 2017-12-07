@@ -1,8 +1,11 @@
 package com.shopping.service;
 
+import com.shopping.common.pojo.AjaxResult;
 import com.shopping.pojo.Item;
 import com.shopping.pojo.Order;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 /*
@@ -17,4 +20,7 @@ public interface StoreService {
     List<Order> getOrderListByStoreId(Integer storeId);
     Item getItemByItemId(Long itemId);
     void updateItem(Item item);
+    AjaxResult uploadPic(MultipartFile pic) throws IOException;
+    void addItem(Item item);
+    List<Order> getOrdersByItemName(String itemName,Integer storeId);
 }

@@ -300,4 +300,9 @@
   <select id="selectOrdersByItemName" parameterType="com.shopping.pojo.Order" resultMap="BaseResultMap">
     SELECT * FROM shoppingsystem.order WHERE buyer_id=#{buyerId} AND item_name LIKE "%"#{itemName}"%"
   </select>
+
+  <select id="selectOrdersByItemNameAndStoreId" parameterType="com.shopping.pojo.Order" resultMap="BaseResultMap">
+    SELECT * FROM shoppingsystem.order WHERE store_id=#{storeId} AND item_name LIKE "%"#{itemName}"%"
+  </select>
+
 </mapper>

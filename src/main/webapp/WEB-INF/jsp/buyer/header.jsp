@@ -37,7 +37,7 @@
             <li>
                 <a href="/buyer/orderlist" title="订单" target="_blank">订单</a>       </li>
             <li>
-                <a href="shopcart.html" title="购物车" target="_blank">购物车</a>       </li>
+                <a href="/buyer/shopcart" title="购物车" target="_blank">购物车</a>       </li>
         </ul>
     </div>
 </div>

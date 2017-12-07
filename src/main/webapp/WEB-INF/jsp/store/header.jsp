@@ -36,6 +36,8 @@
                 <a href="login.html" title="登录" target="_blank">${user.username}</a>       </li>
             <li>
                 <a href="/store/orderlist" title="订单" target="_blank">订单</a>       </li>
+            <li>
+                <a href="/store/toAddItem" title="添加商品" target="_blank">添加商品</a>       </li>
         </ul>
     </div>
 </div>

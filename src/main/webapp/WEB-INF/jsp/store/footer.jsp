@@ -19,7 +19,7 @@
     <style type="text/css">
         #footer {
             width:990px;
-            height:40px;
+            height:100px;
             margin:0 auto;
             background-image:url(/image/3.png)
         }

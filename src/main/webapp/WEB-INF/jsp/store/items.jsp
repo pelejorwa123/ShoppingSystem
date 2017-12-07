@@ -61,7 +61,7 @@
                 <td>${item.price}</td>
                 <td>${item.num}</td>
                 <td>${item.description}</td>
-                <td><button>修改</button></td>
+                <td><a href="/store/toUpdateItem?itemId=${item.id}" style="color: coral">修改</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -70,9 +70,7 @@
 
 <!--footer begin-->
 <div class="mid_index">
-    <iframe src="footer" style="height:40px;
-			width:990px;
-			border-width:0px;"
+    <iframe src="footer" style="height:100px;width:990px;border-width:0px;"
             scrolling="no" ></iframe>
 </div>
 </body>

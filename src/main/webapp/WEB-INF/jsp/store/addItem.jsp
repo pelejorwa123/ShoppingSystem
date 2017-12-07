@@ -17,7 +17,7 @@
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/js/jquery.form.js"></script>
-    <title>修改商品</title>
+    <title>网上商城</title>
 
     <script type="text/javascript">
         function uploadPic() {
@@ -28,7 +28,6 @@
                 success:function(data){
                     if(data.status==200){
                         $("#imgUrl").val(data.msg);
-                        $("#img").attr("src",data.msg);
                     }else {
                         alert(data.msg);
                     }
@@ -55,34 +54,30 @@
 </div>
 <!--main content begin-->
 <div class="content">
-    <center style="font-size:36px;" >修改商品</center>
-    <form id="jvForm" action="/store/updateItem" method="post">
+    <center style="font-size:36px;" >添加商品</center>
+    <form id="jvForm" action="/store/addItem" method="post">
         <div class="text_sign">
             <p>
                 <label for="name">商品名：</label>
-                <input type="hidden" name="id" value="${item.id}"/>
-                <input type="text" name="name" id="name" value="${item.name}" />
+                <input type="text" name="name" id="name" />
             </p>
             <p>
                 <label for="price">价格：</label>&nbsp;&nbsp;&nbsp;
-                <input type="text" name="price" id="price" size="7" value="${item.price}" />
+                <input type="text" name="price" id="price" size="7" />
                 <br>
                 <br>
                 <label for="num">库存：</label>&nbsp;&nbsp;&nbsp;
-                <input name="num" id="num" size="7" value="${item.num}" />
+                <input name="num" id="num" size="7" />
             </p>
             <p>
-                <label style="vertical-align: middle">图片：</label><br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <img src="${item.imgUrl}" id="img" style="width: 180px;height:120px;"/>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="price">图片：</label>&nbsp;&nbsp;&nbsp;
                 <input type="file" name="pic" onchange="uploadPic()"/>
-                <input type="hidden" name="imgUrl" id="imgUrl" value="${item.imgUrl}"/>
+                <input type="hidden" name="imgUrl" id="imgUrl"/>
             </p>
-            商品描述（100字以内）：
+            商品介绍（100字以内）：
         </div>
         <center>
-            <textarea name="description" id="description" rows=5 cols=60>${item.description}</textarea></center><p>
+            <textarea name="description" id="description" rows=5 cols=60></textarea></center><p>
         <div class="submit_sign">
             <input style="height: 30px;width: 50px;" type="submit" name="login" id="login" value="提交">
         </div>
