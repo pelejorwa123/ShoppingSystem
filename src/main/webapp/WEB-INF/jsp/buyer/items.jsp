@@ -21,7 +21,7 @@
     <script type="text/javascript">
         function addCart(itemId) {
             $.ajax({
-                url:"http://localhost:8080/buyer/addCart?itemId="+itemId,
+                url:"/buyer/addCart?itemId="+itemId,
                 type:"post",
                 dataType:"json",
                 contentType: "application/json; charset=utf-8",

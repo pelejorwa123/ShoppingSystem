@@ -28,16 +28,16 @@
     </div>
     <div class="header_text">
         <ul>
-            <li>
+            <li style="color: #FFFFFF">
                 欢迎来到网上商城！	   </li>
             <li>
-                <a href="/buyer/itemlist" title="首页" target="_blank">首页</a>       </li>
+                <a style="color: #FFFFFF" href="/buyer/itemlist" title="首页" target="_blank">首页</a>       </li>
             <li>
-                <a href="#" title="登录" target="_blank">${user.username}</a>       </li>
+                <a style="color: #FFFFFF" href="#" title="登录" target="_blank">${user.username}</a>       </li>
             <li>
-                <a href="/buyer/orderlist" title="订单" target="_blank">订单</a>       </li>
+                <a style="color: #FFFFFF" href="/buyer/orderlist" title="订单" target="_blank">订单</a>       </li>
             <li>
-                <a href="/buyer/shopcart" title="购物车" target="_blank">购物车</a>       </li>
+                <a style="color: #FFFFFF" href="/buyer/shopcart" title="购物车" target="_blank">购物车</a>       </li>
         </ul>
     </div>
 </div>

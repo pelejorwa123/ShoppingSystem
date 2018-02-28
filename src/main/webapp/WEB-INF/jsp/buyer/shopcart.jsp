@@ -20,7 +20,7 @@
     <script type="text/javascript">
         function delCart(itemId) {
             $.ajax({
-                url:"http://localhost:8080/buyer/delCart?itemId="+itemId,
+                url:"/buyer/delCart?itemId="+itemId,
                 type:"post",
                 contentType: "application/json; charset=utf-8",
                 success:function(data){

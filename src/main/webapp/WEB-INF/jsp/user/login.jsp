@@ -16,7 +16,7 @@
         $(document).ready(function(){
             $("#login").click(function(){
                 $.ajax({
-                    url:"http://localhost:8080/user/login",
+                    url:"/user/login",
                     type:"post",
                     dataType:"json",
                     contentType: "application/json; charset=utf-8",
